@@ -1,23 +1,25 @@
 package org.fasttrackit;
 
+import org.fasttrackit.pageobjects.Footer;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ContactUs {
+public class ContactUs extends TestBase{
 
     @Test
 
     public void contactUs(){
-        System.setProperty("webdriver.chrome.driver",
-                "src//test//drivers//chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://fasttrackit.org/selenium-test/");
-        driver.findElement(By.linkText("CONTACT US")).click();
+        Footer footer = PageFactory.initElements(driver, Footer.class);
+
+        String linkText = "Contact Us";
+        footer.getLinksBelowCompany(linkText,driver).click();
+
         driver.findElement(By.id("name")).sendKeys("Titus");
         driver.findElement(By.id("email")).sendKeys("titus.p@yahoo.com");
         driver.findElement(By.id("comment")).sendKeys("This page it is work");

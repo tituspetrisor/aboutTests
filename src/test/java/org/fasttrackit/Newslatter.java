@@ -1,22 +1,22 @@
 package org.fasttrackit;
 
+import org.fasttrackit.pageobjects.Footer;
+import org.fasttrackit.pageobjects.Header;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class Newslatter {
+public class Newslatter extends TestBase{
     @Test
     public void subcribeToNewslatter(){
-        System.setProperty("webdriver.chrome.driver",
-                "src//test//drivers//chromedriver.exe");
-        WebDriver driver=new ChromeDriver();
-        driver.get("https://fasttrackit.org/selenium-test/");
-        driver.findElement(By.xpath("//div[@class = 'input-box']//input[@id = 'newsletter']")).sendKeys("titus.p@yahoo.com");
-        driver.findElement(By.xpath("//div[@class = 'actions']//button[@title = 'Subscribe']")).click();
+        Header header = PageFactory.initElements(driver, Header.class);
+        String email = "titus.p@yahoo.com";
+        header.insertEmail(email);
 
         String expectdMessage = driver.findElement(By.xpath("//div[@class ='col-main']//li[@class = 'success-msg'] ")).getText();
         String corectMessage = "Thank you for your subscription.";
