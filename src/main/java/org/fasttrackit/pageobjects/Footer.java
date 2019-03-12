@@ -15,7 +15,11 @@ public class Footer  {
     @FindBy(className = "search-button")
     private WebElement searchButton;
 
+    @FindBy(id = "newsletter")
+    private WebElement newslatter;
 
+    @FindBy(xpath = "//span[text() = 'Subscribe']")
+    private WebElement pushButton;
 
 
     public WebElement getLinksBelowCompany(String linksBelowCompany, WebDriver driver){
@@ -28,6 +32,12 @@ public class Footer  {
         return driver.findElement(By.xpath("//a[./em[@class = '" + linkName.toLowerCase() + "']]"));
     }
 
+
+    public void insertEmail(String keyword){
+        newslatter.sendKeys(keyword);
+        pushButton.click();
+
+    }
 
 
 

@@ -14,9 +14,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class Newslatter extends TestBase{
     @Test
     public void subcribeToNewslatter(){
-        Header header = PageFactory.initElements(driver, Header.class);
+        Footer footer = PageFactory.initElements(driver, Footer.class);
         String email = "titus.p@yahoo.com";
-        header.insertEmail(email);
+        footer.insertEmail(email);
 
         String expectdMessage = driver.findElement(By.xpath("//div[@class ='col-main']//li[@class = 'success-msg'] ")).getText();
         String corectMessage = "Thank you for your subscription.";

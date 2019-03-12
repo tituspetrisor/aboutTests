@@ -13,23 +13,13 @@ public class Header {
     @FindBy(className = "search-button")
     private WebElement searchButton;
 
-    @FindBy(id = "newsletter")
-    private WebElement newslatter;
 
-    @FindBy(xpath = "//span[text() = 'Subscribe']")
-    private WebElement pushButton;
-
-
-    public void insertEmail(String keyword){
-        newslatter.sendKeys(keyword);
-        pushButton.click();
-
-    }
     public void search(String keyword){
 
         searchField.sendKeys(keyword);
         searchButton.click();
     }
+
 
 
 

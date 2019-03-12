@@ -20,5 +20,7 @@ public class TestBase {
         driver.get(AppConfig.getSiteUrl());
         System.out.println("Opened homepage");
 
+
     }
+
 }

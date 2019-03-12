@@ -1,19 +1,21 @@
 package org.fasttrackit;
 
+import org.fasttrackit.pageobjects.Header;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 
 
-public class RegisterTest{
+public class RegisterTest extends TestBase {
 
     @Test
-public void registerTestForUsers(){
-        System.setProperty("webdriver.chrome.driver",
-        "src//test//drivers//chromedriver.exe");
-        WebDriver driver=new ChromeDriver();
-        driver.get("https://fasttrackit.org/selenium-test/");
+    public void registerTestForUsers() {
+
+
+        Header header = PageFactory.initElements(driver, Header.class);
+
         driver.findElement(By.linkText("ACCOUNT")).click();
         driver.findElement((By.linkText("Register"))).click();
         driver.findElement(By.id("firstname")).sendKeys("Titus");
@@ -23,6 +25,6 @@ public void registerTestForUsers(){
         driver.findElement(By.id("confirmation")).sendKeys("TestRegister");
         driver.findElement(By.id("is_subscribed")).click();
         driver.quit();
-        }
+    }
 
 }
